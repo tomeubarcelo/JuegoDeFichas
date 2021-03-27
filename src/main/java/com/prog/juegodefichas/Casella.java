@@ -13,7 +13,12 @@ public class Casella {
     //atributs
     int fila;
     int columna;
-       
+     
+    public Casella(int fila, int columna){
+        this.fila = fila;
+        this.columna = columna;
+    }
+    
     //Guarda fila dins l'atribut
     public void setFila (int fila){
         this.fila = fila;
@@ -28,7 +33,7 @@ public class Casella {
         this.columna = columna;
     }
     //Mètode que retorna el valor de columna
-    public int getColor () {
+    public int getColumna () {
         return columna;
     }
     

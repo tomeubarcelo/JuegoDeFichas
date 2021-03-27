@@ -9,11 +9,20 @@ package com.prog.juegodefichas;
  *
  * @author tomeu
  */
-public abstract class Fitxa {
+public class Fitxa {
     //atributs
     private String color;
     private Casella fila;
     private Casella columna;
+    private final Casella casella = new Casella(0, 0);
+    
+    //Casella caselles = new Casella(0, 0);
+    
+    //constructor
+    public Fitxa(String color, Casella casella){
+        this.color = color;
+        this.fila = new Casella (fila.getFila(),columna.getColumna());
+    }
     
     //Guarda el color dins l'atribut
     public void setColor (String color){
@@ -24,6 +33,16 @@ public abstract class Fitxa {
         return color;
     }
     
-    public abstract boolean moureA(Casella c); 
+    public Casella getCasella(){
+        int fil, col;
+        Casella c;
+        fil = this.casella.getFila();
+        col = this.casella.getColumna();
+        c = new Casella(fil, col);
+        
+        return c;
+    }
+    
+    //public abstract boolean moureA(Casella c); 
     
 }
