@@ -9,9 +9,21 @@ package com.prog.juegodefichas;
  *
  * @author tomeu
  */
-public class Fitxa {
+public abstract class Fitxa {
     //atributs
-    String color;
-    Casella c;
-    int fila, columna;
+    private String color;
+    private Casella fila;
+    private Casella columna;
+    
+    //Guarda el color dins l'atribut
+    public void setColor (String color){
+        this.color = color;
+    }
+    //Mètode que retorna el valor de color
+    public String getColor () {
+        return color;
+    }
+    
+    public abstract boolean moureA(Casella c); 
+    
 }
