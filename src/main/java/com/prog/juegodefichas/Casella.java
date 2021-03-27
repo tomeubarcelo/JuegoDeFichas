@@ -14,27 +14,11 @@ public class Casella {
     int fila;
     int columna;
      
-    public Casella(int fila, int columna){
-        this.fila = fila;
-        this.columna = columna;
+    public static void main(String args[]) {
+        Fitxa fitxa1 = new Fitxa("rojo",1,2);
+        //no se quin hauria de ser l'altre parametre
+        System.out.println(fitxa1.getColor());
+        System.out.println(fitxa1.getFila());
+        System.out.println(fitxa1.getColumna());
     }
-    
-    //Guarda fila dins l'atribut
-    public void setFila (int fila){
-        this.fila = fila;
-    }
-    //Mètode que retorna el valor de fila
-    public int getFila () {
-        return fila;
-    }
-    
-    //Guarda la columna dins l'atribut
-    public void setColumna (int columna){
-        this.columna = columna;
-    }
-    //Mètode que retorna el valor de columna
-    public int getColumna () {
-        return columna;
-    }
-    
 }

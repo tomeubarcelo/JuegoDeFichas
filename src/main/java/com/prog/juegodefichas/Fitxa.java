@@ -12,16 +12,15 @@ package com.prog.juegodefichas;
 public class Fitxa {
     //atributs
     private String color;
-    private Casella fila;
-    private Casella columna;
-    private final Casella casella = new Casella(0, 0);
-    
+    private int fila;
+    private int columna;
     //Casella caselles = new Casella(0, 0);
     
     //constructor
-    public Fitxa(String color, Casella casella){
+    public Fitxa(String color, int fila, int columna){
         this.color = color;
-        this.fila = new Casella (fila.getFila(),columna.getColumna());
+        this.fila = fila;
+        this.columna =  columna;
     }
     
     //Guarda el color dins l'atribut
@@ -33,15 +32,21 @@ public class Fitxa {
         return color;
     }
     
-    public Casella getCasella(){
-        int fil, col;
-        Casella c;
-        fil = this.casella.getFila();
-        col = this.casella.getColumna();
-        c = new Casella(fil, col);
-        
-        return c;
+    public void setFila (int fila){
+        this.fila = fila;
     }
+    //Mètode que retorna el valor de color
+    public int getFila () {
+        return fila;
+    }
+    public void setColumna (int columna){
+        this.columna = columna;
+    }
+    //Mètode que retorna el valor de color
+    public int getColumna () {
+        return columna;
+    }
+    
     
     //public abstract boolean moureA(Casella c); 
     
