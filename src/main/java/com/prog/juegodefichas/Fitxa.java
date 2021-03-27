@@ -17,6 +17,9 @@ public class Fitxa {
     //Casella caselles = new Casella(0, 0);
     
     //constructor
+    public Fitxa(){
+        
+    }
     public Fitxa(String color, int fila, int columna){
         this.color = color;
         this.fila = fila;
