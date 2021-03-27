@@ -9,7 +9,7 @@ package com.prog.juegodefichas;
  *
  * @author tomeu
  */
-public class Fitxa {
+public abstract class Fitxa {
     //atributs
     private String color;
     private int fila;
@@ -50,7 +50,6 @@ public class Fitxa {
         return columna;
     }
     
-    
-    //public abstract boolean moureA(Casella c); 
+    public abstract boolean moureA(Casella c); 
     
 }

@@ -17,7 +17,12 @@ public class Casella {
     int columna;
      
     public static void main(String args[]) {
-        Fitxa fitxa1 = new Fitxa();
+        Fitxa fitxa1 = new Fitxa() {
+            @Override
+            public boolean moureA(Casella c) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
         //test
         Scanner sc = new Scanner (System.in);
         System.out.print("¿Qué color quieres?");
