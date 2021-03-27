@@ -13,8 +13,8 @@ public class App {
     
     public static void main(String args[]) {
         
-        Fitxa fitxa1 = new Fitxa("rojo",casella);
-        
+        Fitxa fitxa1 = new Fitxa("rojo");
+
         System.out.println(fitxa1.getColor());
     }
     
