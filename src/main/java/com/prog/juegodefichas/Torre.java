@@ -26,9 +26,8 @@ public class Torre extends Fitxa{
         this.vides = vides;
     }
 
-    @Override
     public boolean moureA(Casella c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
     
 }

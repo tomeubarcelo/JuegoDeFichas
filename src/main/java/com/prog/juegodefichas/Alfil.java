@@ -25,9 +25,13 @@ public class Alfil extends Fitxa{
         this.bloc = bloc;
     }
 
-    @Override
     public boolean moureA(Casella c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (c.getFila() == c.getFila()+1) {
+            return true;
+        } else{
+            return false;
+        }
+        
     }
     
 }

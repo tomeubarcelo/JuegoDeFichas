@@ -150,7 +150,7 @@ public class App {
         
         Casella posicioInicialFitxa2 = new Casella (posFila2,posColumna2);
         
-        Fitxa alfil = new Alfil (colorFitxa2, posicioInicialFitxa2) {};
+        Fitxa alfil = new Alfil (colorFitxa2, posicioInicialFitxa2);
         System.out.println(alfil.getColor()+" - posición: "+posicioInicialFitxa2.getFila()+"-"+posicioInicialFitxa2.getColumna());
         
         
@@ -168,19 +168,22 @@ public class App {
             }
             System.out.println("");
         }
+        System.out.println("\n");
         
+        //mas movimientos
         Casella posicioInicialFitxa3 = new Casella (1,2);
         alfil.moureA(posicioInicialFitxa3);
-                for (int i=0; i < tablero.length; i++) {
+        
+        for (int i=0; i < tablero.length; i++) {
             for (int j=0; j < tablero[i].length; j++) {
-                String fichaEnTablero2 = "";
+                String fichaEnTablero3 = "";
                 if (colorFitxa2.equals("alfil")) {
-                    fichaEnTablero2 = "Ab";
+                    fichaEnTablero3 = "Ab";
                 } else if(colorFitxa2.equals("torre")){
-                    fichaEnTablero2 = "Tb";
+                    fichaEnTablero3 = "Tb";
                 }
-                tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()] = fichaEnTablero2;
-
+                tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()] = fichaEnTablero3;
+                tablero[posicioInicialFitxa2.getFila()][posicioInicialFitxa2.getColumna()] = "0";
                 System.out.print(tablero[i][j]+"\t");
             }
             System.out.println("");
