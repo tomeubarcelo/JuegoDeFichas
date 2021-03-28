@@ -11,8 +11,8 @@ package com.prog.juegodefichas;
  */
 public class Casella {
     //atributs
-    int fila;
-    int columna;
+    private int fila;
+    private int columna;
      
     public Casella(int fila, int columna){
         this.fila = fila;

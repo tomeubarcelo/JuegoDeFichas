@@ -9,23 +9,19 @@ package com.prog.juegodefichas;
  *
  * @author tomeu
  */
-public class Fitxa {
+public abstract class Fitxa {
     //atributs
-    private String color;
-    private int fila;
-    private int columna;
-    //private final Casella casella = new Casella(0, 0);
-    
-    Casella caselles;
-    
-    //constructor
+    protected String color;
+    protected Casella posicio;
+   
+    //constructor per defecte
     public Fitxa(){
         
     }
-    
-    public Fitxa(String color){
+    //constructor amb parametres
+    public Fitxa(String color, Casella posicio){
         this.color = color;
-       // this.fila = new Casella (fila.getFila(),columna.getColumna());
+        this.posicio = new Casella (posicio.getFila(), posicio.getColumna());
     }
     
     //Guarda el color dins l'atribut
@@ -37,33 +33,16 @@ public class Fitxa {
         return color;
     }
     
-    public void setCasella (int fila, int columna){
-        this.fila = fila;
-        this.columna = columna;
+    public void setPosicio(Casella posicio){
+         this.posicio = new Casella (posicio.getFila(), posicio.getColumna());
     }
     
-    public Casella getCasella(){
+    public Casella getPosicio(){
         Casella c;
-        fila = caselles.getFila();
-        columna = caselles.getColumna();
-        c = new Casella(fila, columna);
+        c =  new Casella (posicio.getFila(), posicio.getColumna());  
         return c;
     }
     
-    public void setFila (int fila){
-        this.fila = fila;
-    }
-    //Mètode que retorna el valor de color
-    public int getFila () {
-        return fila;
-    }
-    public void setColumna (int columna){
-        this.columna = columna;
-    }
-    //Mètode que retorna el valor de color
-    public int getColumna () {
-        return columna;
-    }
-    //public abstract boolean moureA(Casella c); 
+    public abstract boolean moureA(Casella c); 
     
 }
