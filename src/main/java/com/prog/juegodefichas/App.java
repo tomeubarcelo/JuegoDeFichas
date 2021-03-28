@@ -50,23 +50,23 @@ public class App {
         
         
 
-        //System.out.println(posicioInicialFitxa2.getColumna());
+        //muestra nomenclatura
         for (int i=0; i < tablero.length; i++) {
             for (int j=0; j < tablero[i].length; j++) {
-
-                tablero[posicioInicialFitxa.getColumna()][posicioInicialFitxa.getFila()] = "alfil";
+                String fichaEnTablero = "";
+                if (colorFitxa.equals("alfil")) {
+                    fichaEnTablero = "An";
+                } else if(colorFitxa.equals("torre")){
+                    fichaEnTablero = "Tn";
+                }
+                tablero[posicioInicialFitxa.getColumna()][posicioInicialFitxa.getFila()] = fichaEnTablero;
 
                 System.out.print(tablero[i][j]+"\t");
             }
             System.out.println("");
         }
         
-        
-        
-        
-        
-        
-        
+
         //ficha negra
         //si anteriormente ya se ha elegido alfil, ahora se usara la torre, o viceversa
         
@@ -106,18 +106,21 @@ public class App {
         Fitxa alfil = new Alfil (colorFitxa2, posicioInicialFitxa2);
         System.out.println(alfil.getColor()+" - posición: "+posicioInicialFitxa2.getFila()+"-"+posicioInicialFitxa2.getColumna());
         
-        //System.out.println(posicioInicialFitxa2.getFila());
-        //System.out.println(posicioInicialFitxa2.getColumna());
-        /*for (int i=0; i < tablero.length; i++) {
+        
+        for (int i=0; i < tablero.length; i++) {
             for (int j=0; j < tablero[i].length; j++) {
+                String fichaEnTablero2 = "";
+                if (colorFitxa2.equals("alfil")) {
+                    fichaEnTablero2 = "Ab";
+                } else if(colorFitxa2.equals("torre")){
+                    fichaEnTablero2 = "Tb";
+                }
+                tablero[posicioInicialFitxa2.getColumna()][posicioInicialFitxa2.getFila()] = fichaEnTablero2;
 
-                int posicion = tablero[posicioInicialFitxa.getColumna()][posicioInicialFitxa.getFila()];
-                String posicionFicha=String.valueOf(posicion);
-                posicionFicha = 
                 System.out.print(tablero[i][j]+"\t");
             }
             System.out.println("");
-        }*/
+        }
     }
     
     public static String comprovaFitxa(String fichaParaUsar) throws Exception{
