@@ -96,15 +96,15 @@ public class App {
         //System.out.println(posicioInicialFitxa.getColumna());
         
         
-
+        String fichaEnTablero = "";
         //muestra nomenclatura
         for (int i=0; i < tablero.length; i++) {
             for (int j=0; j < tablero[i].length; j++) {
-                String fichaEnTablero = "";
+                //String fichaEnTablero = "";
                 if (colorFitxa.equals("alfil")) {
-                    fichaEnTablero = "An";
+                    fichaEnTablero = "Ab";
                 } else if(colorFitxa.equals("torre")){
-                    fichaEnTablero = "Tn";
+                    fichaEnTablero = "Tb";
                 }
                 tablero[posicioInicialFitxa.getFila()][posicioInicialFitxa.getColumna()] = fichaEnTablero;
 
@@ -153,14 +153,14 @@ public class App {
         Fitxa alfil = new Alfil (colorFitxa2, posicioInicialFitxa2);
         System.out.println(alfil.getColor()+" - posición: "+posicioInicialFitxa2.getFila()+"-"+posicioInicialFitxa2.getColumna());
         
-        
+        String fichaEnTablero2 = "";
         for (int i=0; i < tablero.length; i++) {
             for (int j=0; j < tablero[i].length; j++) {
-                String fichaEnTablero2 = "";
+                //fichaEnTablero2 = "";
                 if (colorFitxa2.equals("alfil")) {
-                    fichaEnTablero2 = "Ab";
+                    fichaEnTablero2 = "An";
                 } else if(colorFitxa2.equals("torre")){
-                    fichaEnTablero2 = "Tb";
+                    fichaEnTablero2 = "Tn";
                 }
                 tablero[posicioInicialFitxa2.getFila()][posicioInicialFitxa2.getColumna()] = fichaEnTablero2;
 
@@ -171,23 +171,26 @@ public class App {
         System.out.println("\n");
         
         //mas movimientos
-        Casella posicioInicialFitxa3 = new Casella (1,2);
-        alfil.moureA(posicioInicialFitxa3);
+        Casella posicioInicialFitxa3 = new Casella (1,1);
         
-        for (int i=0; i < tablero.length; i++) {
-            for (int j=0; j < tablero[i].length; j++) {
-                String fichaEnTablero3 = "";
-                if (colorFitxa2.equals("alfil")) {
-                    fichaEnTablero3 = "Ab";
-                } else if(colorFitxa2.equals("torre")){
-                    fichaEnTablero3 = "Tb";
+        //caso en el que el 3er movimiento fuera el alfil
+        if (alfil.moureA(posicioInicialFitxa3)) {
+            for (int i=0; i < tablero.length; i++) {
+                for (int j=0; j < tablero[i].length; j++) {
+                    //String fichaEnTablero3 = "Ab";
+
+                    tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()] = fichaEnTablero;
+                    tablero[posicioInicialFitxa.getFila()][posicioInicialFitxa.getColumna()] = "0";
+                    System.out.print(tablero[i][j]+"\t");
                 }
-                tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()] = fichaEnTablero3;
-                tablero[posicioInicialFitxa2.getFila()][posicioInicialFitxa2.getColumna()] = "0";
-                System.out.print(tablero[i][j]+"\t");
+                System.out.println("");
             }
-            System.out.println("");
+        } else{
+            System.out.println("wrr");
         }
+
+        
+
     }
     
     public static boolean comprovaFitxa(String fichaParaUsar) throws Exception{

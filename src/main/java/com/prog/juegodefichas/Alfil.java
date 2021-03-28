@@ -26,12 +26,11 @@ public class Alfil extends Fitxa{
     }
 
     public boolean moureA(Casella c) {
-        if (c.getFila() == c.getFila()+1) {
+        if (c.getFila() == c.getColumna()) {
             return true;
         } else{
             return false;
         }
-        
     }
     
 }
