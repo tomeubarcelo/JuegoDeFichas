@@ -5,6 +5,7 @@
  */
 package com.prog.juegodefichas;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
@@ -58,18 +59,34 @@ public class App {
         }
         comprovaFitxa(colorFitxa2); //metodo que comprueba que solo es alfil o torre
         System.out.println("Tu usarás "+colorFitxa2);
-        //pide posicion de la fila
-        System.out.println("¿Qué posición quieres? (Fila de 0 a 5)");
-        int posFila2 = sc.nextInt();
-        //pide posicion de la columna
-        System.out.println("¿Qué posición quieres? (Columna de 0 a 5)");
-        int posColumna2 = sc.nextInt();
         
+        int posFila2 = 0;
+        int posColumna2 = 0;
+        boolean posicionCorrecta = false;
+        do {            
+            try{
+                //pide posicion de la fila
+                System.out.println("¿Qué posición quieres? (Fila de 0 a 5)");
+                posFila2 = sc.nextInt();
+                //pide posicion de la columna
+                System.out.println("¿Qué posición quieres? (Columna de 0 a 5)");
+                posColumna2 = sc.nextInt();
+                
+                if (posFila == posFila2 && posColumna == posColumna2) {
+                    System.out.println("Esta posición está ocupada por la ficha: "+colorFitxa);
+                } else{
+                    posicionCorrecta = true;
+                }
+            }catch(Exception e) {
+                System.out.println(e.getMessage());
+            }
+        } while (!posicionCorrecta);
         
         Casella posicioInicialFitxa2 = new Casella (posFila2,posColumna2);
         
         Fitxa alfil = new Alfil (colorFitxa2, posicioInicialFitxa2);
         System.out.println(alfil.getColor()+" - posición: "+posicioInicialFitxa2.getFila()+"-"+posicioInicialFitxa2.getColumna());
+        
         //System.out.println(posicioInicialFitxa2.getFila());
         //System.out.println(posicioInicialFitxa2.getColumna());
         /*for (int i=0; i < tablero.length; i++) {
