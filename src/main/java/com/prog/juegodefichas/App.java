@@ -16,11 +16,11 @@ public class App {
            
     public static void main(String args[]) throws Exception {
         Scanner sc = new Scanner (System.in);
-        int [][]tablero = new int[5][5];
+        String [][]tablero = new String[5][5];
 
         for (int i=0; i < tablero.length; i++) {
             for (int j=0; j < tablero[i].length; j++) {
-                tablero[i][j]= 0;
+                tablero[i][j]= "0";
                 System.out.print(tablero[i][j]+"\t");
             }
             System.out.println("");
@@ -47,6 +47,25 @@ public class App {
         System.out.println("Usarás: "+torre.getColor()+" - posición: "+posicioInicialFitxa.getFila()+"-"+posicioInicialFitxa.getColumna());
         //System.out.println(posicioInicialFitxa.getFila());
         //System.out.println(posicioInicialFitxa.getColumna());
+        
+        
+
+        //System.out.println(posicioInicialFitxa2.getColumna());
+        for (int i=0; i < tablero.length; i++) {
+            for (int j=0; j < tablero[i].length; j++) {
+
+                tablero[posicioInicialFitxa.getColumna()][posicioInicialFitxa.getFila()] = "alfil";
+
+                System.out.print(tablero[i][j]+"\t");
+            }
+            System.out.println("");
+        }
+        
+        
+        
+        
+        
+        
         
         //ficha negra
         //si anteriormente ya se ha elegido alfil, ahora se usara la torre, o viceversa
