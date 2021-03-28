@@ -134,9 +134,40 @@ public class App {
                 //pide posicion de la fila
                 System.out.println("¿Qué posición quieres? (Fila de 0 a 4)");
                 posFila2 = sc.nextInt();
+
+                dadaOk = false;
+                do {            
+                    try {
+                        if (posFila2 >= 0 && posFila2 <= 4) {
+                            dadaOk = true;
+                        } else{
+                            System.out.println("Vuelve a seleccionar una fila de 0 a 4");
+                            dadaOk = false;
+                        }
+                    } catch (Exception e) {
+                        dadaOk = false;
+                        System.err.println(e);
+                    }
+                } while (!dadaOk);
+        
                 //pide posicion de la columna
                 System.out.println("¿Qué posición quieres? (Columna de 0 a 4)");
                 posColumna2 = sc.nextInt();
+                dadaOk = false;
+                do {            
+                    try {
+                        if (posColumna2 >= 0 && posColumna2 <= 4) {
+                            dadaOk = true;
+                        } else{
+                            System.out.println("Vuelve a seleccionar una columna de 0 a 4");
+                            dadaOk = false;
+                        }
+                    } catch (Exception e) {
+                        dadaOk = false;
+                        System.err.println(e);
+                    }
+                } while (!dadaOk);
+                
                 
                 if (posFila == posFila2 && posColumna == posColumna2) {
                     System.out.println("Esta posición está ocupada por la ficha: "+colorFitxa);
@@ -171,7 +202,14 @@ public class App {
         System.out.println("\n");
         
         //mas movimientos
-        Casella posicioInicialFitxa3 = new Casella (1,1);
+        System.out.println("Turno para: "+fichaEnTablero);
+        //pide posicion de la fila
+        System.out.println("¿Qué posición quieres? (Fila de 0 a 4)");
+        int posFila3 = sc.nextInt();
+        //pide posicion de la columna
+        System.out.println("¿Qué posición quieres? (Columna de 0 a 4)");
+        int posColumna3 = sc.nextInt();
+        Casella posicioInicialFitxa3 = new Casella (posFila3,posColumna3);
         
         //caso en el que el 3er movimiento fuera el alfil
         if (alfil.moureA(posicioInicialFitxa3)) {
@@ -186,7 +224,7 @@ public class App {
                 System.out.println("");
             }
         } else{
-            System.out.println("wrr");
+            System.out.println("Error");
         }
 
         
