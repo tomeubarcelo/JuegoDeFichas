@@ -16,8 +16,8 @@ public class App {
         String colorFitxa = "blanc";
         Casella posicioInicialFitxa = new Casella (1,1);
         int vides = 1;
-        //Fitxa torre = new Torre (colorFitxa, posicioInicialFitxa, vides);
-        //System.out.println(torre.getColor());
+        Fitxa torre = new Torre (colorFitxa, posicioInicialFitxa, vides);
+        System.out.println(torre.getColor());
         System.out.println(posicioInicialFitxa.getColumna());
         System.out.println(posicioInicialFitxa.getFila());
     }

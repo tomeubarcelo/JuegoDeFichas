@@ -43,6 +43,7 @@ public abstract class Fitxa {
         return c;
     }
     
+    //metodo abstract
     public abstract boolean moureA(Casella c); 
     
 }
