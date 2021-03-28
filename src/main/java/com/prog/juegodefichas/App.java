@@ -29,17 +29,64 @@ public class App {
         //ficha blanca
         //pide el color
         System.out.println("Empieza la ficha blanca. ¿Qué ficha quieres usar? (alfil o torre)");
-        String colorFitxa = sc.next();
-        comprovaFitxa(colorFitxa); //metodo que comprueba que solo es alfil o torre
-        
-        //pide posicion de la fila
-        System.out.println("¿Qué posición quieres? (Fila de 0 a 5)");
-        int posFila = sc.nextInt();
-        //pide posicion de la columna
-        System.out.println("¿Qué posición quieres? (Columna de 0 a 5)");
-        int posColumna = sc.nextInt();
+        boolean dadaOk;
+        String colorFitxa = "";
+        do {                          
+            try {
+                colorFitxa = sc.next();
+                    if (comprovaFitxa(colorFitxa)) {  //metodo que comprueba que solo es alfil o torre 
+                        dadaOk = true;
+                    } else{
+                        System.out.println("introduce alfil o torre");
+                        dadaOk = false;
+                    }
+            } catch (Exception e) {
+                System.err.println(e);
+                dadaOk = false;
+            }
+        } while (!dadaOk);
 
         
+        //pide posicion de la fila
+        System.out.println("¿Qué posición quieres? (Fila de 0 a 4)");
+        int posFila = 0;
+        dadaOk = false;
+        do {            
+            try {
+                posFila = sc.nextInt();
+                if (posFila >= 0 && posFila <= 4) {
+                    dadaOk = true;
+                } else{
+                    System.out.println("Vuelve a seleccionar una fila de 0 a 4");
+                    dadaOk = false;
+                }
+            } catch (Exception e) {
+                dadaOk = false;
+                System.err.println(e);
+            }
+        } while (!dadaOk);
+        
+        //pide posicion de la columna
+        dadaOk = false;
+        System.out.println("¿Qué posición quieres? (Columna de 0 a 4)");
+        int posColumna = 0;
+        do {            
+            try {
+                posColumna = sc.nextInt();
+                if (posColumna >= 0 && posColumna <= 4) {
+                    dadaOk = true;
+                } else{
+                    System.out.println("Vuelve a seleccionar una columna de 0 a 4");
+                    dadaOk = false;
+                }
+            } catch (Exception e) {
+                dadaOk = false;
+                System.err.println(e);
+            }
+        } while (!dadaOk);
+        
+
+        //declaramos clase casilla
         Casella posicioInicialFitxa = new Casella (posFila,posColumna);
         
         int vides = 1;
@@ -59,7 +106,7 @@ public class App {
                 } else if(colorFitxa.equals("torre")){
                     fichaEnTablero = "Tn";
                 }
-                tablero[posicioInicialFitxa.getColumna()][posicioInicialFitxa.getFila()] = fichaEnTablero;
+                tablero[posicioInicialFitxa.getFila()][posicioInicialFitxa.getColumna()] = fichaEnTablero;
 
                 System.out.print(tablero[i][j]+"\t");
             }
@@ -77,7 +124,7 @@ public class App {
             colorFitxa2 = "alfil";
         }
         comprovaFitxa(colorFitxa2); //metodo que comprueba que solo es alfil o torre
-        System.out.println("Tu usarás "+colorFitxa2);
+        System.out.println("\nTu usarás "+colorFitxa2);
         
         int posFila2 = 0;
         int posColumna2 = 0;
@@ -85,10 +132,10 @@ public class App {
         do {            
             try{
                 //pide posicion de la fila
-                System.out.println("¿Qué posición quieres? (Fila de 0 a 5)");
+                System.out.println("¿Qué posición quieres? (Fila de 0 a 4)");
                 posFila2 = sc.nextInt();
                 //pide posicion de la columna
-                System.out.println("¿Qué posición quieres? (Columna de 0 a 5)");
+                System.out.println("¿Qué posición quieres? (Columna de 0 a 4)");
                 posColumna2 = sc.nextInt();
                 
                 if (posFila == posFila2 && posColumna == posColumna2) {
@@ -103,7 +150,7 @@ public class App {
         
         Casella posicioInicialFitxa2 = new Casella (posFila2,posColumna2);
         
-        Fitxa alfil = new Alfil (colorFitxa2, posicioInicialFitxa2);
+        Fitxa alfil = new Alfil (colorFitxa2, posicioInicialFitxa2) {};
         System.out.println(alfil.getColor()+" - posición: "+posicioInicialFitxa2.getFila()+"-"+posicioInicialFitxa2.getColumna());
         
         
@@ -115,7 +162,24 @@ public class App {
                 } else if(colorFitxa2.equals("torre")){
                     fichaEnTablero2 = "Tb";
                 }
-                tablero[posicioInicialFitxa2.getColumna()][posicioInicialFitxa2.getFila()] = fichaEnTablero2;
+                tablero[posicioInicialFitxa2.getFila()][posicioInicialFitxa2.getColumna()] = fichaEnTablero2;
+
+                System.out.print(tablero[i][j]+"\t");
+            }
+            System.out.println("");
+        }
+        
+        Casella posicioInicialFitxa3 = new Casella (1,2);
+        alfil.moureA(posicioInicialFitxa3);
+                for (int i=0; i < tablero.length; i++) {
+            for (int j=0; j < tablero[i].length; j++) {
+                String fichaEnTablero2 = "";
+                if (colorFitxa2.equals("alfil")) {
+                    fichaEnTablero2 = "Ab";
+                } else if(colorFitxa2.equals("torre")){
+                    fichaEnTablero2 = "Tb";
+                }
+                tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()] = fichaEnTablero2;
 
                 System.out.print(tablero[i][j]+"\t");
             }
@@ -123,13 +187,15 @@ public class App {
         }
     }
     
-    public static String comprovaFitxa(String fichaParaUsar) throws Exception{
-
-           if (fichaParaUsar.equals("alfil") || fichaParaUsar.equals("torre")) {
-               return fichaParaUsar;
-            } else{
-                throw new Exception(" - Ficha incorrecta. Usa alfil o torre."); 
-            } 
-
+    public static boolean comprovaFitxa(String fichaParaUsar) throws Exception{
+        
+        try {
+            return fichaParaUsar.equals("alfil") || fichaParaUsar.equals("torre"); 
+        } catch (Exception e) {
+            throw new Exception(e+" - Ficha incorrecta. Usa alfil o torre."); 
+        }
+         
     }
+    
+    
 }

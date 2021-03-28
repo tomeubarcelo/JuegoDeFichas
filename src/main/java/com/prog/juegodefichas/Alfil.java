@@ -16,12 +16,6 @@ public class Alfil extends Fitxa{
         super(color, posicio);
         this.bloc = bloc;
     }
-    
-    
-    @Override
-    public boolean moureA(Casella c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     public Casella getBloc() {
         return bloc;
@@ -29,6 +23,11 @@ public class Alfil extends Fitxa{
 
     public void setBloc(Casella bloc) {
         this.bloc = bloc;
+    }
+
+    @Override
+    public boolean moureA(Casella c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
