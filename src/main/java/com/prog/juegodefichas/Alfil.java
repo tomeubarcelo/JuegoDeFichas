@@ -12,7 +12,7 @@ package com.prog.juegodefichas;
 public class Alfil extends Fitxa{
     private Casella bloc;
     
-    public Alfil(String color, Casella posicio, Casella bloc){
+    public Alfil(String color, Casella posicio){
         super(color, posicio);
         this.bloc = bloc;
     }
