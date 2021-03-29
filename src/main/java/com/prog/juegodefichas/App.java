@@ -202,9 +202,9 @@ public class App {
         System.out.println("\n");
         
         //que ficha es la 1a y la 2a
-        System.out.println("Primera ficha: "+fichaEnTablero);
-        System.out.println("Segunda ficha: "+fichaEnTablero2);
-        System.out.println(turnoParaFicha(fichaEnTablero));
+        //System.out.println("Primera ficha: "+fichaEnTablero);
+        //System.out.println("Segunda ficha: "+fichaEnTablero2);
+        //System.out.println(turnoParaFicha(fichaEnTablero));
         String fichaQueMuevePrimero = turnoParaFicha(fichaEnTablero);
         
         boolean winTn = false;
@@ -276,7 +276,7 @@ public class App {
 
         //mas movimientos
         String fichaQueMueveDespues = turnoParaFicha(fichaEnTablero2);
-        System.out.println(fichaQueMueveDespues);
+        //System.out.println(fichaQueMueveDespues);
         System.out.println("Turno para: "+fichaEnTablero2);
         
         //comprueba si primero va alfil negra o torre negra
@@ -377,7 +377,5 @@ public class App {
         return turnoPara;
     }
     
-    public static void continuarJugando(){
-        
-    }
+
 }
