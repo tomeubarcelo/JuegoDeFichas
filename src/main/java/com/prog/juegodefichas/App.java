@@ -15,10 +15,10 @@ import java.util.Scanner;
 public class App {
            
     public static void main(String args[]) throws Exception {
-        Scanner sc = new Scanner (System.in);
-        String [][]tablero = new String[5][5];
+        Scanner sc = new Scanner (System.in); 
+        String [][]tablero = new String[5][5]; //array bidimensional que sera el tablero
 
-        for (int i=0; i < tablero.length; i++) {
+        for (int i=0; i < tablero.length; i++) { //bucle que muestra tablero
             for (int j=0; j < tablero[i].length; j++) {
                 tablero[i][j]= "0";
                 System.out.print(tablero[i][j]+"\t");
@@ -51,7 +51,7 @@ public class App {
         System.out.println("¿Qué posición quieres? (Fila de 0 a 4)");
         int posFila = 0;
         dadaOk = false;
-        do {            
+        do { //bucle mientras no se haya seleccionado correctamente           
             try {
                 posFila = sc.nextInt();
                 if (posFila >= 0 && posFila <= 4) {
@@ -70,7 +70,7 @@ public class App {
         dadaOk = false;
         System.out.println("¿Qué posición quieres? (Columna de 0 a 4)");
         int posColumna = 0;
-        do {            
+        do { //bucle mientras no se haya seleccionado correctamente         
             try {
                 posColumna = sc.nextInt();
                 if (posColumna >= 0 && posColumna <= 4) {
@@ -100,7 +100,7 @@ public class App {
         //muestra nomenclatura
         for (int i=0; i < tablero.length; i++) {
             for (int j=0; j < tablero[i].length; j++) {
-                //String fichaEnTablero = "";
+                //ab: Alfil Blanco --- tb: Torre Blanca
                 if (colorFitxa.equals("alfil")) {
                     fichaEnTablero = "Ab";
                 } else if(colorFitxa.equals("torre")){
@@ -113,10 +113,8 @@ public class App {
             System.out.println("");
         }
         
-
         //ficha negra
-        //si anteriormente ya se ha elegido alfil, ahora se usara la torre, o viceversa
-        
+        //si anteriormente ya se ha elegido alfil, ahora se usara la torre, o viceversa      
         String colorFitxa2 = "";
         if (colorFitxa.equals("alfil")) {
             colorFitxa2 = "torre";
@@ -129,7 +127,7 @@ public class App {
         int posFila2 = 0;
         int posColumna2 = 0;
         boolean posicionCorrecta = false;
-        do {            
+        do {  //bucle hasta que se haga la seleccion correcta      
             try{
                 //pide posicion de la fila
                 System.out.println("¿Qué posición quieres? (Fila de 0 a 4)");
@@ -154,7 +152,7 @@ public class App {
                 System.out.println("¿Qué posición quieres? (Columna de 0 a 4)");
                 posColumna2 = sc.nextInt();
                 dadaOk = false;
-                do {            
+                do { //bucle hasta seleccion correcta           
                     try {
                         if (posColumna2 >= 0 && posColumna2 <= 4) {
                             dadaOk = true;
@@ -168,7 +166,7 @@ public class App {
                     }
                 } while (!dadaOk);
                 
-                
+                //en el primer movimiento la segunda ficha no se puede poner encima de la primera
                 if (posFila == posFila2 && posColumna == posColumna2) {
                     System.out.println("Esta posición está ocupada por la ficha: "+colorFitxa);
                 } else{
@@ -179,6 +177,7 @@ public class App {
             }
         } while (!posicionCorrecta);
         
+        //declaracion casella
         Casella posicioInicialFitxa2 = new Casella (posFila2,posColumna2);
         
         Fitxa alfil = new Alfil (colorFitxa2, posicioInicialFitxa2);
@@ -209,15 +208,16 @@ public class App {
         
         boolean winTn = false;
         boolean winAn = false;
-        
+        boolean winTb = false;
+        boolean winAb = false;
         boolean kill = false;
+        
         do {            
 
         
         //mas movimientos
         System.out.println("Turno para: "+fichaEnTablero);
-        
-        
+                
         //comprueba si primero va alfil blanca o torre blanca
         if (fichaQueMuevePrimero.equals("Ab")) {
             //pide posicion de la fila
@@ -234,7 +234,10 @@ public class App {
                 for (int i=0; i < tablero.length; i++) {
                     for (int j=0; j < tablero[i].length; j++) {
                         //String fichaEnTablero3 = "Ab";
-
+                        if (tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()].equals("Tn")) {
+                            kill = true;
+                            winAb = true;
+                        }
                         tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()] = fichaEnTablero;
                         tablero[posicioInicialFitxa.getFila()][posicioInicialFitxa.getColumna()] = "0";
                         System.out.print(tablero[i][j]+"\t");
@@ -260,7 +263,10 @@ public class App {
                 torre.getPosicio();
                 for (int i=0; i < tablero.length; i++) {
                     for (int j=0; j < tablero[i].length; j++) {
-
+                        if (tablero[posicioInicialFitxa4.getFila()][posicioInicialFitxa4.getColumna()].equals("An")) {
+                            winTb = true;
+                            kill = true;
+                        }
                         tablero[posicioInicialFitxa4.getFila()][posicioInicialFitxa4.getColumna()] = fichaEnTablero2;
                         tablero[posicioInicialFitxa2.getFila()][posicioInicialFitxa2.getColumna()] = "0";
                         System.out.print(tablero[i][j]+"\t");
@@ -296,11 +302,10 @@ public class App {
                 for (int i=0; i < tablero.length; i++) {
                     for (int j=0; j < tablero[i].length; j++) {
                         //String fichaEnTablero3 = "Ab";
-                        if (tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()].equals(fichaEnTablero2)) {
+                        if (tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()].equals("Tb")) {
                             System.out.println("Has matado! Enhorabuena "+fichaEnTablero);
                             kill = true;
-                            winAn = true;
-                            
+                            winAn = true;                           
                         }
                         tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()] = fichaEnTablero;
                         tablero[posicioInicialFitxa.getFila()][posicioInicialFitxa.getColumna()] = "0";
@@ -329,7 +334,7 @@ public class App {
                 torre.getPosicio();
                 for (int i=0; i < tablero.length; i++) {
                     for (int j=0; j < tablero[i].length; j++) {
-                        if (tablero[posicioInicialFitxa4.getFila()][posicioInicialFitxa4.getColumna()].equals(fichaEnTablero)) {
+                        if (tablero[posicioInicialFitxa4.getFila()][posicioInicialFitxa4.getColumna()].equals(fichaEnTablero)) {                        
                             System.out.println("Has matado! Enhorabuena "+fichaEnTablero2);
                             kill = true;
                             winTn = true;
@@ -346,7 +351,7 @@ public class App {
             posicioInicialFitxa2 = posicioInicialFitxa4; //asignamos esta posicion a la posicion actual
         }
             
-        } while (!kill || !winTn || !winAn);
+        } while (!kill || !winTn || !winAn || !winAb || !winTb);
     }
     
     public static boolean comprovaFitxa(String fichaParaUsar) throws Exception{
