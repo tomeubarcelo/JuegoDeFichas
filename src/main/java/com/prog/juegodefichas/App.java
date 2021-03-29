@@ -206,6 +206,11 @@ public class App {
         System.out.println("Segunda ficha: "+fichaEnTablero2);
         System.out.println(turnoParaFicha(fichaEnTablero));
         String fichaQueMuevePrimero = turnoParaFicha(fichaEnTablero);
+        
+        boolean kill = false;
+        do {            
+
+        
         //mas movimientos
         System.out.println("Turno para: "+fichaEnTablero);
         
@@ -219,8 +224,8 @@ public class App {
             System.out.println("¿Qué posición quieres? (Columna de 0 a 4)");
             int posColumna3 = sc.nextInt();
             Casella posicioInicialFitxa3 = new Casella (posFila3,posColumna3);
-        
-            //caso en el que el 3er movimiento fuera el alfil
+            
+            //caso movimiento fuera el alfil
             if (alfil.moureA(posicioInicialFitxa,posicioInicialFitxa3)) {
                 alfil.getPosicio();
                 for (int i=0; i < tablero.length; i++) {
@@ -236,6 +241,7 @@ public class App {
             } else{
                 System.out.println("Error. No puedes hacer ese movimiento");
             }
+            posicioInicialFitxa = posicioInicialFitxa3; //asignamos esta posicion a la posicion actual
             
         } else if(fichaQueMuevePrimero.equals("Tb")){
             //pide posicion de la fila
@@ -261,10 +267,10 @@ public class App {
             } else{
                 System.out.println("Error. No puedes hacer ese movimiento");
             }
+            posicioInicialFitxa2 = posicioInicialFitxa4; //asignamos esta posicion a la posicion actual
         }
 
-        
-        
+
         //mas movimientos
         String fichaQueMueveDespues = turnoParaFicha(fichaEnTablero2);
         System.out.println(fichaQueMueveDespues);
@@ -286,9 +292,13 @@ public class App {
                 for (int i=0; i < tablero.length; i++) {
                     for (int j=0; j < tablero[i].length; j++) {
                         //String fichaEnTablero3 = "Ab";
-
+                        if (tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()].equals(fichaEnTablero2)) {
+                            System.out.println("Has matado! Enhorabuena "+fichaEnTablero);
+                            kill = true;
+                        }
                         tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()] = fichaEnTablero;
                         tablero[posicioInicialFitxa.getFila()][posicioInicialFitxa.getColumna()] = "0";
+
                         System.out.print(tablero[i][j]+"\t");
                     }
                     System.out.println("");
@@ -296,6 +306,7 @@ public class App {
             } else{
                 System.out.println("Error. No puedes hacer ese movimiento");
             }
+            posicioInicialFitxa = posicioInicialFitxa3; //asignamos esta posicion a la posicion actual
             
         } else if(fichaQueMueveDespues.equals("Tn")){
             //pide posicion de la fila
@@ -311,7 +322,10 @@ public class App {
                 torre.getPosicio();
                 for (int i=0; i < tablero.length; i++) {
                     for (int j=0; j < tablero[i].length; j++) {
-
+                        if (tablero[posicioInicialFitxa4.getFila()][posicioInicialFitxa4.getColumna()].equals(fichaEnTablero)) {
+                            System.out.println("Has matado! Enhorabuena "+fichaEnTablero2);
+                            kill = true;
+                        }
                         tablero[posicioInicialFitxa4.getFila()][posicioInicialFitxa4.getColumna()] = fichaEnTablero2;
                         tablero[posicioInicialFitxa2.getFila()][posicioInicialFitxa2.getColumna()] = "0";
                         System.out.print(tablero[i][j]+"\t");
@@ -321,8 +335,10 @@ public class App {
             } else{
                 System.out.println("Error. No puedes hacer ese movimiento");
             }
+            posicioInicialFitxa2 = posicioInicialFitxa4; //asignamos esta posicion a la posicion actual
         }
-
+            
+        } while (!kill);
     }
     
     public static boolean comprovaFitxa(String fichaParaUsar) throws Exception{
