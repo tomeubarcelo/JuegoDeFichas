@@ -201,61 +201,127 @@ public class App {
         }
         System.out.println("\n");
         
+        //que ficha es la 1a y la 2a
+        System.out.println("Primera ficha: "+fichaEnTablero);
+        System.out.println("Segunda ficha: "+fichaEnTablero2);
+        System.out.println(turnoParaFicha(fichaEnTablero));
+        String fichaQueMuevePrimero = turnoParaFicha(fichaEnTablero);
         //mas movimientos
         System.out.println("Turno para: "+fichaEnTablero);
-        //pide posicion de la fila
-        System.out.println("¿Qué posición quieres? (Fila de 0 a 4)");
-        int posFila3 = sc.nextInt();
-        //pide posicion de la columna
-        System.out.println("¿Qué posición quieres? (Columna de 0 a 4)");
-        int posColumna3 = sc.nextInt();
-        Casella posicioInicialFitxa3 = new Casella (posFila3,posColumna3);
         
-        //caso en el que el 3er movimiento fuera el alfil
-        if (alfil.moureA(posicioInicialFitxa,posicioInicialFitxa3)) {
-            alfil.getPosicio();
-            for (int i=0; i < tablero.length; i++) {
-                for (int j=0; j < tablero[i].length; j++) {
-                    //String fichaEnTablero3 = "Ab";
+        
+        //comprueba si primero va alfil blanca o torre blanca
+        if (fichaQueMuevePrimero.equals("Ab")) {
+            //pide posicion de la fila
+            System.out.println("¿Qué posición quieres? (Fila de 0 a 4)");
+            int posFila3 = sc.nextInt();
+            //pide posicion de la columna
+            System.out.println("¿Qué posición quieres? (Columna de 0 a 4)");
+            int posColumna3 = sc.nextInt();
+            Casella posicioInicialFitxa3 = new Casella (posFila3,posColumna3);
+        
+            //caso en el que el 3er movimiento fuera el alfil
+            if (alfil.moureA(posicioInicialFitxa,posicioInicialFitxa3)) {
+                alfil.getPosicio();
+                for (int i=0; i < tablero.length; i++) {
+                    for (int j=0; j < tablero[i].length; j++) {
+                        //String fichaEnTablero3 = "Ab";
 
-                    tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()] = fichaEnTablero;
-                    tablero[posicioInicialFitxa.getFila()][posicioInicialFitxa.getColumna()] = "0";
-                    System.out.print(tablero[i][j]+"\t");
+                        tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()] = fichaEnTablero;
+                        tablero[posicioInicialFitxa.getFila()][posicioInicialFitxa.getColumna()] = "0";
+                        System.out.print(tablero[i][j]+"\t");
+                    }
+                    System.out.println("");
                 }
-                System.out.println("");
+            } else{
+                System.out.println("Error. No puedes hacer ese movimiento");
             }
-        } else{
-            System.out.println("Error. No puedes hacer ese movimiento");
+            
+        } else if(fichaQueMuevePrimero.equals("Tb")){
+            //pide posicion de la fila
+            System.out.println("¿Qué posición quieres? (Fila de 0 a 4)");
+            int posFila4 = sc.nextInt();
+            //pide posicion de la columna
+            System.out.println("¿Qué posición quieres? (Columna de 0 a 4)");
+            int posColumna4 = sc.nextInt();
+            Casella posicioInicialFitxa4 = new Casella (posFila4,posColumna4);
+
+            //caso en el que el 3er movimiento fuera el alfil
+            if (torre.moureA(posicioInicialFitxa2,posicioInicialFitxa4)) {
+                torre.getPosicio();
+                for (int i=0; i < tablero.length; i++) {
+                    for (int j=0; j < tablero[i].length; j++) {
+
+                        tablero[posicioInicialFitxa4.getFila()][posicioInicialFitxa4.getColumna()] = fichaEnTablero2;
+                        tablero[posicioInicialFitxa2.getFila()][posicioInicialFitxa2.getColumna()] = "0";
+                        System.out.print(tablero[i][j]+"\t");
+                    }
+                    System.out.println("");
+                }
+            } else{
+                System.out.println("Error. No puedes hacer ese movimiento");
+            }
         }
+
         
         
         //mas movimientos
+        String fichaQueMueveDespues = turnoParaFicha(fichaEnTablero2);
+        System.out.println(fichaQueMueveDespues);
         System.out.println("Turno para: "+fichaEnTablero2);
-        //pide posicion de la fila
-        System.out.println("¿Qué posición quieres? (Fila de 0 a 4)");
-        int posFila4 = sc.nextInt();
-        //pide posicion de la columna
-        System.out.println("¿Qué posición quieres? (Columna de 0 a 4)");
-        int posColumna4 = sc.nextInt();
-        Casella posicioInicialFitxa4 = new Casella (posFila4,posColumna4);
         
-        //caso en el que el 3er movimiento fuera el alfil
-        if (torre.moureA(posicioInicialFitxa2,posicioInicialFitxa4)) {
-            torre.getPosicio();
-            for (int i=0; i < tablero.length; i++) {
-                for (int j=0; j < tablero[i].length; j++) {
-                    //String fichaEnTablero3 = "Ab";
+        //comprueba si primero va alfil negra o torre negra
+        if (fichaQueMueveDespues.equals("An")) {
+            //pide posicion de la fila
+            System.out.println("¿Qué posición quieres? (Fila de 0 a 4)");
+            int posFila3 = sc.nextInt();
+            //pide posicion de la columna
+            System.out.println("¿Qué posición quieres? (Columna de 0 a 4)");
+            int posColumna3 = sc.nextInt();
+            Casella posicioInicialFitxa3 = new Casella (posFila3,posColumna3);
+        
+            //caso en el que el 3er movimiento fuera el alfil
+            if (alfil.moureA(posicioInicialFitxa,posicioInicialFitxa3)) {
+                alfil.getPosicio();
+                for (int i=0; i < tablero.length; i++) {
+                    for (int j=0; j < tablero[i].length; j++) {
+                        //String fichaEnTablero3 = "Ab";
 
-                    tablero[posicioInicialFitxa4.getFila()][posicioInicialFitxa4.getColumna()] = fichaEnTablero2;
-                    tablero[posicioInicialFitxa2.getFila()][posicioInicialFitxa2.getColumna()] = "0";
-                    System.out.print(tablero[i][j]+"\t");
+                        tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()] = fichaEnTablero;
+                        tablero[posicioInicialFitxa.getFila()][posicioInicialFitxa.getColumna()] = "0";
+                        System.out.print(tablero[i][j]+"\t");
+                    }
+                    System.out.println("");
                 }
-                System.out.println("");
+            } else{
+                System.out.println("Error. No puedes hacer ese movimiento");
             }
-        } else{
-            System.out.println("Error. No puedes hacer ese movimiento");
+            
+        } else if(fichaQueMueveDespues.equals("Tn")){
+            //pide posicion de la fila
+            System.out.println("¿Qué posición quieres? (Fila de 0 a 4)");
+            int posFila4 = sc.nextInt();
+            //pide posicion de la columna
+            System.out.println("¿Qué posición quieres? (Columna de 0 a 4)");
+            int posColumna4 = sc.nextInt();
+            Casella posicioInicialFitxa4 = new Casella (posFila4,posColumna4);
+
+            //caso en el que el 3er movimiento fuera el alfil
+            if (torre.moureA(posicioInicialFitxa2,posicioInicialFitxa4)) {
+                torre.getPosicio();
+                for (int i=0; i < tablero.length; i++) {
+                    for (int j=0; j < tablero[i].length; j++) {
+
+                        tablero[posicioInicialFitxa4.getFila()][posicioInicialFitxa4.getColumna()] = fichaEnTablero2;
+                        tablero[posicioInicialFitxa2.getFila()][posicioInicialFitxa2.getColumna()] = "0";
+                        System.out.print(tablero[i][j]+"\t");
+                    }
+                    System.out.println("");
+                }
+            } else{
+                System.out.println("Error. No puedes hacer ese movimiento");
+            }
         }
-        
 
     }
     
@@ -267,6 +333,24 @@ public class App {
             throw new Exception(e+" - Ficha incorrecta. Usa alfil o torre."); 
         }
          
+    }
+    
+    public static String turnoParaFicha(String fichaQueMovera){
+        String turnoPara= "";
+        if (fichaQueMovera.equals("Ab")) {
+            System.out.println("1er condicional. Ab");
+            turnoPara = "Ab";
+        } else if(fichaQueMovera.equals("Tb")){
+            System.out.println("2o condicional. Tb");
+            turnoPara = "Tb";
+        } else if(fichaQueMovera.equals("An")){
+            System.out.println("3er condicional. An");
+            turnoPara = "An";
+        } else if(fichaQueMovera.equals("Tn")) {
+            System.out.println("4o condicional. Tn");
+            turnoPara = "Tn";
+        }
+        return turnoPara;
     }
     
     public static void continuarJugando(){
