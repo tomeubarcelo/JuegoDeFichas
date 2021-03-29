@@ -26,8 +26,12 @@ public class Torre extends Fitxa{
         this.vides = vides;
     }
 
-    public boolean moureA(Casella c) {
-        return true;
+    public boolean moureA(Casella c, Casella desti) {
+        if (c.getFila() == desti.getFila() || c.getColumna() == desti.getColumna()) {          
+            return true;
+        } else{
+            return false;
+        }
     }
     
 }

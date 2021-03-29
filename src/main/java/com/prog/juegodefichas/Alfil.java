@@ -14,7 +14,7 @@ public class Alfil extends Fitxa{
     
     public Alfil(String color, Casella posicio){
         super(color, posicio);
-        this.bloc = bloc;
+        //this.bloc = bloc;
     }
 
     public Casella getBloc() {
@@ -25,8 +25,8 @@ public class Alfil extends Fitxa{
         this.bloc = bloc;
     }
 
-    public boolean moureA(Casella c) {
-        if (c.getFila() == c.getColumna()) {
+    public boolean moureA(Casella c, Casella desti) {
+        if (Math.abs(c.getFila() - desti.getFila()) == Math.abs(c.getColumna()- desti.getColumna())  ) {          
             return true;
         } else{
             return false;

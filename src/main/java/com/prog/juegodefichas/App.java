@@ -123,7 +123,7 @@ public class App {
         } else{
             colorFitxa2 = "alfil";
         }
-        comprovaFitxa(colorFitxa2); //metodo que comprueba que solo es alfil o torre
+        //comprovaFitxa(colorFitxa2); //metodo que comprueba que solo es alfil o torre
         System.out.println("\nTu usarás "+colorFitxa2);
         
         int posFila2 = 0;
@@ -212,7 +212,8 @@ public class App {
         Casella posicioInicialFitxa3 = new Casella (posFila3,posColumna3);
         
         //caso en el que el 3er movimiento fuera el alfil
-        if (alfil.moureA(posicioInicialFitxa3)) {
+        if (alfil.moureA(posicioInicialFitxa,posicioInicialFitxa3)) {
+            alfil.getPosicio();
             for (int i=0; i < tablero.length; i++) {
                 for (int j=0; j < tablero[i].length; j++) {
                     //String fichaEnTablero3 = "Ab";
@@ -224,7 +225,7 @@ public class App {
                 System.out.println("");
             }
         } else{
-            System.out.println("Error");
+            System.out.println("Error. No puedes hacer ese movimiento");
         }
 
         

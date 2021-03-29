@@ -44,6 +44,6 @@ public abstract class Fitxa {
     }
     
     //metodo abstract
-    public abstract boolean moureA(Casella c); 
+    public abstract boolean moureA(Casella c, Casella desti); 
     
 }
