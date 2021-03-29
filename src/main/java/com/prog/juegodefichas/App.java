@@ -227,7 +227,34 @@ public class App {
         } else{
             System.out.println("Error. No puedes hacer ese movimiento");
         }
+        
+        
+        //mas movimientos
+        System.out.println("Turno para: "+fichaEnTablero2);
+        //pide posicion de la fila
+        System.out.println("¿Qué posición quieres? (Fila de 0 a 4)");
+        int posFila4 = sc.nextInt();
+        //pide posicion de la columna
+        System.out.println("¿Qué posición quieres? (Columna de 0 a 4)");
+        int posColumna4 = sc.nextInt();
+        Casella posicioInicialFitxa4 = new Casella (posFila4,posColumna4);
+        
+        //caso en el que el 3er movimiento fuera el alfil
+        if (torre.moureA(posicioInicialFitxa2,posicioInicialFitxa4)) {
+            torre.getPosicio();
+            for (int i=0; i < tablero.length; i++) {
+                for (int j=0; j < tablero[i].length; j++) {
+                    //String fichaEnTablero3 = "Ab";
 
+                    tablero[posicioInicialFitxa4.getFila()][posicioInicialFitxa4.getColumna()] = fichaEnTablero2;
+                    tablero[posicioInicialFitxa2.getFila()][posicioInicialFitxa2.getColumna()] = "0";
+                    System.out.print(tablero[i][j]+"\t");
+                }
+                System.out.println("");
+            }
+        } else{
+            System.out.println("Error. No puedes hacer ese movimiento");
+        }
         
 
     }
@@ -242,5 +269,7 @@ public class App {
          
     }
     
-    
+    public static void continuarJugando(){
+        
+    }
 }
