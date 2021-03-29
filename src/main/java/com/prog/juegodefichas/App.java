@@ -207,6 +207,9 @@ public class App {
         System.out.println(turnoParaFicha(fichaEnTablero));
         String fichaQueMuevePrimero = turnoParaFicha(fichaEnTablero);
         
+        boolean winTn = false;
+        boolean winAn = false;
+        
         boolean kill = false;
         do {            
 
@@ -225,7 +228,7 @@ public class App {
             int posColumna3 = sc.nextInt();
             Casella posicioInicialFitxa3 = new Casella (posFila3,posColumna3);
             
-            //caso movimiento fuera el alfil
+            //caso en el que le toca al alfil siendo blanco
             if (alfil.moureA(posicioInicialFitxa,posicioInicialFitxa3)) {
                 alfil.getPosicio();
                 for (int i=0; i < tablero.length; i++) {
@@ -252,7 +255,7 @@ public class App {
             int posColumna4 = sc.nextInt();
             Casella posicioInicialFitxa4 = new Casella (posFila4,posColumna4);
 
-            //caso en el que el 3er movimiento fuera el alfil
+            //caso en el que le toca a la torre siendo blanca
             if (torre.moureA(posicioInicialFitxa2,posicioInicialFitxa4)) {
                 torre.getPosicio();
                 for (int i=0; i < tablero.length; i++) {
@@ -269,7 +272,7 @@ public class App {
             }
             posicioInicialFitxa2 = posicioInicialFitxa4; //asignamos esta posicion a la posicion actual
         }
-
+        
 
         //mas movimientos
         String fichaQueMueveDespues = turnoParaFicha(fichaEnTablero2);
@@ -285,8 +288,9 @@ public class App {
             System.out.println("¿Qué posición quieres? (Columna de 0 a 4)");
             int posColumna3 = sc.nextInt();
             Casella posicioInicialFitxa3 = new Casella (posFila3,posColumna3);
-        
-            //caso en el que el 3er movimiento fuera el alfil
+            
+            
+            //caso en el que le toca al alfil siendo negro
             if (alfil.moureA(posicioInicialFitxa,posicioInicialFitxa3)) {
                 alfil.getPosicio();
                 for (int i=0; i < tablero.length; i++) {
@@ -295,6 +299,8 @@ public class App {
                         if (tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()].equals(fichaEnTablero2)) {
                             System.out.println("Has matado! Enhorabuena "+fichaEnTablero);
                             kill = true;
+                            winAn = true;
+                            
                         }
                         tablero[posicioInicialFitxa3.getFila()][posicioInicialFitxa3.getColumna()] = fichaEnTablero;
                         tablero[posicioInicialFitxa.getFila()][posicioInicialFitxa.getColumna()] = "0";
@@ -316,8 +322,9 @@ public class App {
             System.out.println("¿Qué posición quieres? (Columna de 0 a 4)");
             int posColumna4 = sc.nextInt();
             Casella posicioInicialFitxa4 = new Casella (posFila4,posColumna4);
-
-            //caso en el que el 3er movimiento fuera el alfil
+            
+            
+            //caso en el le toca a la torre siendo negra
             if (torre.moureA(posicioInicialFitxa2,posicioInicialFitxa4)) {
                 torre.getPosicio();
                 for (int i=0; i < tablero.length; i++) {
@@ -325,6 +332,7 @@ public class App {
                         if (tablero[posicioInicialFitxa4.getFila()][posicioInicialFitxa4.getColumna()].equals(fichaEnTablero)) {
                             System.out.println("Has matado! Enhorabuena "+fichaEnTablero2);
                             kill = true;
+                            winTn = true;
                         }
                         tablero[posicioInicialFitxa4.getFila()][posicioInicialFitxa4.getColumna()] = fichaEnTablero2;
                         tablero[posicioInicialFitxa2.getFila()][posicioInicialFitxa2.getColumna()] = "0";
@@ -338,7 +346,7 @@ public class App {
             posicioInicialFitxa2 = posicioInicialFitxa4; //asignamos esta posicion a la posicion actual
         }
             
-        } while (!kill);
+        } while (!kill || !winTn || !winAn);
     }
     
     public static boolean comprovaFitxa(String fichaParaUsar) throws Exception{
@@ -354,16 +362,16 @@ public class App {
     public static String turnoParaFicha(String fichaQueMovera){
         String turnoPara= "";
         if (fichaQueMovera.equals("Ab")) {
-            System.out.println("1er condicional. Ab");
+            //System.out.println("1er condicional. Ab");
             turnoPara = "Ab";
         } else if(fichaQueMovera.equals("Tb")){
-            System.out.println("2o condicional. Tb");
+            //System.out.println("2o condicional. Tb");
             turnoPara = "Tb";
         } else if(fichaQueMovera.equals("An")){
-            System.out.println("3er condicional. An");
+            //System.out.println("3er condicional. An");
             turnoPara = "An";
         } else if(fichaQueMovera.equals("Tn")) {
-            System.out.println("4o condicional. Tn");
+            //System.out.println("4o condicional. Tn");
             turnoPara = "Tn";
         }
         return turnoPara;
