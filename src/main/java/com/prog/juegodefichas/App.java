@@ -210,9 +210,10 @@ public class App {
         boolean winAn = false;
         boolean winTb = false;
         boolean winAb = false;
+        //declaracio boolean per sortir del bucle
         boolean kill = false;
-        
-        do {            
+        while (!kill) {            
+            
 
         
         //mas movimientos
@@ -250,6 +251,11 @@ public class App {
             posicioInicialFitxa = posicioInicialFitxa3; //asignamos esta posicion a la posicion actual
             
         } else if(fichaQueMuevePrimero.equals("Tb")){
+            /*if (tablero[posicioInicialFitxa2.getFila()][posicioInicialFitxa2.getColumna()].equals("An")) {
+                System.out.println("victoria an");
+                            kill = true;
+                            winAb = true;
+                        }*/
             //pide posicion de la fila
             System.out.println("¿Qué posición quieres? (Fila de 0 a 4)");
             int posFila4 = sc.nextInt();
@@ -351,7 +357,7 @@ public class App {
             posicioInicialFitxa2 = posicioInicialFitxa4; //asignamos esta posicion a la posicion actual
         }
             
-        } while (!kill || !winTn || !winAn || !winAb || !winTb);
+        }
     }
     
     public static boolean comprovaFitxa(String fichaParaUsar) throws Exception{
